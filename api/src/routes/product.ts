@@ -1,0 +1,11 @@
+import express from 'express';
+import productController from './../controllers/productController';
+import { checkProductData } from '../middleware/validate';
+import { verifyTokenAndAdmin, verifyTokenAndUserAuthorization } from '../middleware/auth';
+const router = express.Router();
+router.get('/', verifyTokenAndAdmin, productController.getProducts);
+router.post('/', verifyTokenAndAdmin, checkProductData, productController.addProduct);
+router.get('/:id', verifyTokenAndUserAuthorization, productController.getProduct);
+router.put('/:id', verifyTokenAndAdmin, checkProductData, productController.updateProduct);
+router.delete('/:id', verifyTokenAndAdmin, productController.deleteProduct);
+export default router;

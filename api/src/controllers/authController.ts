@@ -61,12 +61,10 @@ const authController = {
     },
     requestRefreshToken: async (req, res) => {
         try {
-            // console.log(req)
             //Get refreshToken from cookies
             const refreshToken = req.cookies?.refreshToken;
             // console.log(refreshToken)
-            // console.log(refreshTokens);
-            // console.log(refreshToken)
+            
             if (!refreshToken) return res.status(401).json("You're not authenticated");
 
             //Check refreshToken from db

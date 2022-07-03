@@ -8,16 +8,24 @@ import cookieParser from 'cookie-parser';
 import connectDB from './config/connectDB';
 import route from './routes'
 dotenv.config();
-const listURL = ['http://127.0.0.1:5500', 'http://localhost:3000'];
+
+//! config cors production
+//const listURL = [];
+// const corsOptions = {
+//     origin: (origin, callback) => {
+//         if (listURL.indexOf(origin) !== -1 || !origin) {
+//             callback(null, true);
+//         } else {
+//             callback(new Error('Not allowed by CORS'));
+//         }
+//     },
+//     optionsSuccessStatus: 200
+// }
+//?config cors development
 const corsOptions = {
-    origin: (origin, callback) => {
-        if (listURL.indexOf(origin) !== -1 || !origin) {
-            callback(null, true);
-        } else {
-            callback(new Error('Not allowed by CORS'));
-        }
-    },
-    optionsSuccessStatus: 200
+    origin: 'http://localhost:3000',
+    credentials: true,
+    optionSuccessStatus: 200
 }
 const port = process.env.PORT || 4000;
 const app = express();

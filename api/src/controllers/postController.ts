@@ -20,7 +20,7 @@ const postController = {
             }
 
         } catch (error) {
-            await logEvents(error.message, module.filename);
+            logEvents(error.message, module.filename);
             console.log(error.message)
             return res.status(500).json(error);
         }
@@ -37,7 +37,7 @@ const postController = {
             }
 
         } catch (error) {
-            await logEvents(error.message, module.filename);
+            logEvents(error.message, module.filename);
             console.log(error.message)
             return res.status(500).json(error);
         }
@@ -54,7 +54,7 @@ const postController = {
             }
 
         } catch (error) {
-            await logEvents(error.message, module.filename);
+            logEvents(error.message, module.filename);
             console.log(error.message)
             return res.status(500).json(error);
         }
@@ -70,7 +70,7 @@ const postController = {
                 return res.status(403).json("You're not allowed to do that!");
             }
         } catch (error) {
-            await logEvents(error.message, module.filename);
+            logEvents(error.message, module.filename);
             console.log(error.message)
             return res.status(500).json(error);
         }
@@ -88,7 +88,7 @@ const postController = {
             }
 
         } catch (error) {
-            await logEvents(error.message, module.filename);
+            logEvents(error.message, module.filename);
             console.log(error.message)
             return res.status(500).json(error);
         }
@@ -99,7 +99,7 @@ const postController = {
             if (!deletePost) return res.status(401).json("Post not found or user not authorised");
             return res.status(200).json("Deleted post successfully");
         } catch (error) {
-            await logEvents(error.message, module.filename);
+            logEvents(error.message, module.filename);
             console.log(error.message)
             return res.status(500).json(error);
         }

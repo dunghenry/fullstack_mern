@@ -5,7 +5,7 @@ import jwt from 'jsonwebtoken';
 let refreshTokens = [];
 const authController = {
     generateAccessToken: (user) => {
-        return jwt.sign({ userId: user._id, isAdmin: user.isAdmin }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '5d' })
+        return jwt.sign({ userId: user._id, isAdmin: user.isAdmin }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1d' })
     },
     generateRefreshToken: (user) => {
         return jwt.sign({ userId: user._id, isAdmin: user.isAdmin }, process.env.REFRESH_TOKEN_SECRET, { expiresIn: '365d' })

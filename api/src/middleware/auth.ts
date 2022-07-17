@@ -12,12 +12,12 @@ export const verifyToken = async (req, res, next) => {
         } catch (error) {
             if (error.name === "TokenExpiredError")
                 return res.status(401).json("Token expired");
-            await logEvents(error.message, module.filename);
+            logEvents(error.message, module.filename);
             return res.status(403).json("Token invalid");
         }
     }
     else {
-        await logEvents("Token not found", module.filename);
+        logEvents("Token not found", module.filename);
         return res.status(401).json("Token not found")
     }
 }

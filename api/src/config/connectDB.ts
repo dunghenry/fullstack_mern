@@ -5,12 +5,11 @@ const connectDB = async () => {
         await mongoose.connect(process.env.MONGODB_URL, {
             serverSelectionTimeoutMS: 5000,
             autoIndex: false,
-            
         });
         console.log("Connect DB successfully!!")
     } catch (error) {
         console.log("Connect DB failed");
-        await logEvents(error.message, module.filename);
+        logEvents(error.message, module.filename);
         process.exit(1);
     }
 }
@@ -21,7 +20,7 @@ mongoose.connection.on("error", async (error) => {
     if (error) {
         console.log("Connect DB error");
         await logEvents(error.message, module.filename);
-        process.exit(-1);
+        process.exit(1);
     }
 });
 mongoose.connection.on('disconnecting', () => {

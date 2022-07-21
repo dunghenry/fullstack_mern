@@ -14,20 +14,21 @@ const refreshToken = async () =>{
         console.log(error);
     }
 }
-
-// interface Idecoded{
-//     userId: string;
-//     isAdmin: boolean;
-//     exp: number;
-//     iat: number;
-// }
-
-export const customAxios = (user: {accessToken: string}, dispatch: AppDispatch, stateSuccess: ActionCreatorWithPayload<any, string>) =>{
+interface IUser{
+    _id?: string;  
+    username?: string;
+    isAdmin?: boolean;
+    createdAt?: string;
+    updatedAt?: string;
+    __v?: number;
+    accessToken: string;  
+}
+export const customAxios = (user: IUser, dispatch: AppDispatch, stateSuccess: ActionCreatorWithPayload<any, string>) =>{
     const API : AxiosInstance = axios.create();
     API.interceptors.request.use(async (config) =>{
         let date = new Date();
         const decoded : Idecoded = jwt_decode(user?.accessToken);
-        if(decoded?.exp < date.getTime() / 1000){
+        if(decoded.exp < date.getTime() / 1000){
             const data = await refreshToken();
             const newUser = {
                 ...user,
@@ -42,4 +43,5 @@ export const customAxios = (user: {accessToken: string}, dispatch: AppDispatch, 
     }, (error) =>{
         return Promise.reject(error);
     })
+    return API;
 }

@@ -1,4 +1,3 @@
-import React from 'react';
 import './styles.scss';
 import { useAppDispatch } from '../../store/hooks';
 import { useNavigate } from 'react-router-dom';
@@ -6,7 +5,6 @@ import * as Yup from 'yup';
 import { useFormik } from 'formik';
 import { register } from '../../store/actions/auth';
 import { IFormRegister } from '../../types';
-import console from 'console';
 const RegisterForm = () => {
     const navigate = useNavigate();
     const dispatch = useAppDispatch();

@@ -12,7 +12,7 @@ const userController = {
             })
             res.status(200).json(results);
         } catch (error) {
-            logEvents(error.message, module.filename);
+            await logEvents(error.message, module.filename);
             return res.status(500).json(error);
         }
     },
@@ -26,7 +26,7 @@ const userController = {
             const {password, ...info} = user['_doc']
             res.status(200).json(info);
         } catch (error) {
-            logEvents(error.message, module.filename);
+            await logEvents(error.message, module.filename);
             return res.status(500).json(error);
         }
     },
@@ -39,7 +39,7 @@ const userController = {
             await User.findByIdAndDelete(id);
             res.status(200).json("Deleted user successfully!");
         } catch (error) {
-            logEvents(error.message, module.filename);
+            await logEvents(error.message, module.filename);
             return res.status(500).json(error);
         }
     },
@@ -66,7 +66,7 @@ const userController = {
         }
         catch (error) {
             console.log(error);
-            logEvents(error.message, module.filename);
+            await logEvents(error.message, module.filename);
             return res.status(500).json(error);
         }
     }

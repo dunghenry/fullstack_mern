@@ -1,7 +1,7 @@
-import React, {useState, useEffect} from 'react'
+import {useState, useEffect} from 'react'
 import { useNavigate } from 'react-router-dom';
 const LoadingToRedirect = () => {
-    const [count, setCount] = useState(3);
+    const [count, setCount] = useState(4);
     const navigate = useNavigate();
     useEffect(() => {
         const interval = setInterval(() => {

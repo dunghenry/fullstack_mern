@@ -35,7 +35,7 @@ const LoginForm = () => {
         <input type="password" value={values.password} onChange={handleChange} id="password" placeholder="Enter password..." className="w-full p-1.5 border mt-2" />
         {errors.password && <p className="errorMsg">{errors.password}</p>}
       </div>
-      <button type="submit" className="w-full rounded-md p-3 my-2 font-semibold tracking-wider bg-blue-600 text-white uppercase border-2 hover:bg-purple-900">Register</button>
+      <button type="submit" className="w-full rounded-md p-3 my-2 font-semibold tracking-wider bg-blue-600 text-white uppercase border-2 hover:bg-purple-900">Login</button>
     </form>
   )
 }
